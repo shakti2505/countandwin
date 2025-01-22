@@ -13,6 +13,7 @@ function App() {
     total_counter_score: 0,
     user_name: "",
   });
+  const prod_URL = import.meta.env.VITE_PROD_URL;
 
   const handleCount = (e) => {
     increment(e);
@@ -22,7 +23,7 @@ function App() {
   const increment = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("https://server-a9ag.onrender.com/increment", {
+      const res = await fetch(`${prod_URL}/increment`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +47,7 @@ function App() {
 
   const getGameData = async (name) => {
     try {
-      const res = await fetch(`https://server-a9ag.onrender.com/getData/${name}`, {
+      const res = await fetch(`${prod_URL}/getData/${name}`, {
         headers: {
           accept: "application/json",
         },
